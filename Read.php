@@ -1,22 +1,25 @@
 <?php
 include_once 'Database.php';
+include_once 'SqlExecutor.php';
 
 	//trida Read pro cteni z databaze dodane v konstruktoru 
 	class Read
 	{
 		private $database;
+		private $sqlExecutor;
 
 		//pri zavolani konstruktoru se inicializuji promenne $database a $databaseConnection
-		function __construct($db)
+		function __construct($database)
 		{
-			$database = $db;
+			$this->database = $db;
+			$sqlExecutor = new SqlExecutor($db);
 		}
 
 		//funkce getProduct vraci pocet produktu podle parametru $limit, parametr $offset urcuje offset ve vysledku dotazu select 
 		public function getProduct($limit,$offSet) {
 
 			//vysledek sql dotazu select
-			$sqlRestult = $database->getSqlQuery("SELECT * FROM Products LIMIT".$limit."OFFSET".$offSet);
+			$sqlRestult = $sqlExecutor->executeSqlQuery("SELECT * FROM Products LIMIT".$limit."OFFSET".$offSet);
 				
 			//test zda dotaz obsahuje nejake vysledky 
 			if ($sqlRestult->number_of_rows > 0) {

@@ -1,10 +1,11 @@
 <?php 
   class Database {
-    
+    // DB Params
     private $host = 'localhost';
     private $db_name = 'Products';
     private $conn;
-    
+
+    // DB Connect
     public function connect($username,$password) {
       $conn = null;
 
@@ -14,13 +15,6 @@
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }
-    }
-
-    public function getSqlQuery($queryStatement)
-    {
-      $returnStatement = $conn->prepare($sqlQuery);
-      $returnStatement->execute();
-      return $returnStatement;
     }
   }
 ?>
