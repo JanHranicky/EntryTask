@@ -12,7 +12,7 @@ include_once 'SqlExecutor.php';
 		function __construct($database)
 		{
 			$this->database = $db;
-			$sqlExecutor = new SqlExecutor($db);
+			$sqlExecutor = new SqlExecutor($db->getConnection);
 		}
 
 		//funkce getProduct vraci pocet produktu podle parametru $limit, parametr $offset urcuje offset ve vysledku dotazu select 
