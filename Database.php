@@ -1,11 +1,10 @@
 <?php 
   class Database {
-    // DB Params
+    
     private $host = 'localhost';
     private $db_name = 'Products';
     private $conn;
 
-    // DB Connect
     public function connect($username,$password) {
       $conn = null;
 
